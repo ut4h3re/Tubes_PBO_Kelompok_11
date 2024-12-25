@@ -28,6 +28,9 @@ public class Receipt {
 
         // Logika untuk menuju ke feedback scene
         feedbackButton.setOnAction(e -> {
+            Feedback feedback = new Feedback();
+            Scene feedbackScene = feedback.createFeedbackScene(primaryStage);
+            primaryStage.setScene(feedbackScene);
         });
         
         return receiptScene;
