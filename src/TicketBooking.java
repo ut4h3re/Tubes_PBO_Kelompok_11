@@ -9,7 +9,7 @@ public class TicketBooking {
 
     public Scene createTicketScene(Stage primaryStage) {
         Label title = new Label("Aplikasi Pemesanan Tiket Konser");
-        title.setStyle("-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2E86C1;");
+        title.setStyle("-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill:rgb(204, 114, 137)");
 
         Label nameLabel = new Label("Nama Pelanggan:");
         TextField nameField = new TextField();
@@ -37,6 +37,7 @@ public class TicketBooking {
 
         VBox ticketLayout = new VBox(15);
         ticketLayout.setPadding(new Insets(20));
+        ticketLayout.setStyle("-fx-background-color:rgb(226, 209, 215)");
         ticketLayout.getChildren().addAll(title, nameLabel, nameField, concertLabel, concertComboBox, categoryLabel, categoryComboBox, ticketLabel, ticketField, totalPriceLabel, buyButton);
 
         Scene ticketScene = new Scene(ticketLayout, 450, 450);

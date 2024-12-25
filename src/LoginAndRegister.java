@@ -41,6 +41,7 @@ public class LoginAndRegister {
 
         VBox loginLayout = new VBox(10);
         loginLayout.setPadding(new Insets(20));
+        loginLayout.setStyle("-fx-background-color:rgb(226, 209, 215)");
         loginLayout.getChildren().addAll(
                 loginTitle, emailLabel, emailField,
                 passwordLabel, passwordField,
@@ -75,6 +76,7 @@ public class LoginAndRegister {
 
         VBox registerLayout = new VBox(10);
         registerLayout.setPadding(new Insets(20));
+        registerLayout.setStyle("-fx-background-color:rgb(226, 209, 215)");
         registerLayout.getChildren().addAll(
                 registerTitle, regEmailLabel, regEmailField,
                 regPasswordLabel, regPasswordField,
