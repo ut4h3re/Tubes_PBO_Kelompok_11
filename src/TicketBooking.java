@@ -125,7 +125,15 @@ public class TicketBooking {
         });
 
         completePaymentButton.setOnAction(e -> {
-            
+            String receiptDetails = "Nama Pelanggan: " + nameField.getText() + "\n" +
+                                    "Konser: " + concertComboBox.getValue() + "\n" +
+                                    "Kategori: " + categoryComboBox.getValue() + "\n" +
+                                    "Jumlah Tiket: " + ticketField.getText() + "\n" +
+                                    "Jumlah Harga: " + totalPriceLabel.getText() + "\n" +
+                                    vaDetails.getText();
+            Receipt receipt = new Receipt();
+            Scene receiptScene = receipt.createReceiptScene(primaryStage, receiptDetails);
+            primaryStage.setScene(receiptScene);    
         });
 
         changePaymentButton.setOnAction(e -> primaryStage.setScene(paymentScene));
