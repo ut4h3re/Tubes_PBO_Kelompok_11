@@ -91,6 +91,9 @@ public class LoginAndRegister {
 
             if (userDatabase.containsKey(email) && userDatabase.get(email).equals(password)) {
                 System.out.println("Login berhasil!");
+                TicketBooking ticketBooking = new TicketBooking();
+                Scene ticketScene = ticketBooking.createTicketScene(primaryStage);
+                primaryStage.setScene(ticketScene);  // Switch to Ticket Booking Scene
             } else {
                 loginMessage.setText("Email atau Password salah!");
             }
