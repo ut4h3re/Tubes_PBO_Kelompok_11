@@ -20,13 +20,15 @@ public class LoginAndRegister {
     private void initializeScenes(Stage primaryStage) {
         // Scene Login
         Label loginTitle = new Label("Login Aplikasi Tiket Konser");
-        loginTitle.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2E86C1;");
+        loginTitle.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: rgb(204, 114, 137)");
 
         Label emailLabel = new Label("Email:");
+        emailLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
         TextField emailField = new TextField();
         emailField.setPromptText("Masukkan email Anda");
 
         Label passwordLabel = new Label("Password:");
+        passwordLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
         PasswordField passwordField = new PasswordField();
         passwordField.setPromptText("Masukkan password Anda");
 
@@ -52,17 +54,20 @@ public class LoginAndRegister {
 
         // Scene Registrasi
         Label registerTitle = new Label("Daftar Akun Baru");
-        registerTitle.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2E86C1;");
+        registerTitle.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: rgb(204, 114, 137)");
 
         Label regEmailLabel = new Label("Email:");
+        regEmailLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
         TextField regEmailField = new TextField();
         regEmailField.setPromptText("Masukkan email Anda");
 
         Label regPasswordLabel = new Label("Password:");
+        regPasswordLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
         PasswordField regPasswordField = new PasswordField();
         regPasswordField.setPromptText("Masukkan password Anda");
 
         Label confirmPasswordLabel = new Label("Konfirmasi Password:");
+        confirmPasswordLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
         PasswordField confirmPasswordField = new PasswordField();
         confirmPasswordField.setPromptText("Konfirmasi password Anda");
 
@@ -73,6 +78,7 @@ public class LoginAndRegister {
         backToLoginButton.setStyle("-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold;");
 
         Label registerMessage = new Label();
+        registerMessage.setStyle("-fx-text-fill: red;");
 
         VBox registerLayout = new VBox(10);
         registerLayout.setPadding(new Insets(20));
@@ -84,7 +90,7 @@ public class LoginAndRegister {
                 submitRegisterButton, backToLoginButton, registerMessage
         );
 
-        registerScene = new Scene(registerLayout, 400, 400);
+        registerScene = new Scene(registerLayout, 400, 350);
 
         // Login Button Action
         loginButton.setOnAction(e -> {
@@ -95,7 +101,7 @@ public class LoginAndRegister {
                 System.out.println("Login berhasil!");
                 TicketBooking ticketBooking = new TicketBooking();
                 Scene ticketScene = ticketBooking.createTicketScene(primaryStage);
-                primaryStage.setScene(ticketScene);  // Switch to Ticket Booking Scene
+                primaryStage.setScene(ticketScene);  // Menuju ke Ticket Booking Scene
             } else {
                 loginMessage.setText("Email atau Password salah!");
             }
@@ -104,7 +110,7 @@ public class LoginAndRegister {
         // Register Button Action - Pindah ke Scene Registrasi
         registerButton.setOnAction(e -> primaryStage.setScene(registerScene));
 
-        // Back to Login Button Action
+        // Kembali ke Login Button Action
         backToLoginButton.setOnAction(e -> primaryStage.setScene(loginScene));
 
         // Submit Register Button Action
@@ -129,7 +135,7 @@ public class LoginAndRegister {
             }
 
             userDatabase.put(email, password);
-            registerMessage.setText("Registrasi berhasil!");
+            System.out.println("Registrasi berhasil!");
             primaryStage.setScene(loginScene);  // Kembali ke login setelah registrasi sukses
         });
     }
