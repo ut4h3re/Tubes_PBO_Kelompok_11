@@ -1,5 +1,6 @@
 import javafx.scene.Scene;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -8,8 +9,13 @@ import java.util.Random;
 public class TicketBooking {
 
     public Scene createTicketScene(Stage primaryStage) {
-        Label title = new Label("Aplikasi Pemesanan Tiket Konser");
-        title.setStyle("-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill:rgb(204, 114, 137)");
+        Label title = new Label("TicketVibe");
+        title.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill:rgb(204, 114, 137)");
+
+        HBox titleContainer= new HBox();
+        titleContainer.setAlignment(Pos.CENTER); // Align title to the center
+        titleContainer.getChildren().add(title);        
+
 
         Label nameLabel = new Label("Nama Pelanggan:");
         nameLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
@@ -19,14 +25,14 @@ public class TicketBooking {
         Label concertLabel = new Label("Pilih Konser:");
         concertLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
         ComboBox<String> concertComboBox = new ComboBox<>();
-        concertComboBox.getItems().addAll("Coldplay", "BTS", "Taylor Swift", "Juicy Luicy", "Bernadya", "Daniel Caesar", "Master Limbad");
-        concertComboBox.setStyle("-fx-background-color:rgb(184, 141, 253); -fx-text-fill: white; -fx-font-weight: bold;");
+        concertComboBox.getItems().addAll("Coldplay", "BTS", "Taylor Swift", "Juicy Luicy", "Bernadya", "Daniel Caesar");
+        concertComboBox.setStyle("-fx-background-color:rgb(204, 114, 137); -fx-text-fill: white; -fx-font-weight: bold;");
 
         Label categoryLabel = new Label("Pilih Kategori Tiket:");
         categoryLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
         ComboBox<String> categoryComboBox = new ComboBox<>();
         categoryComboBox.getItems().addAll("VIP - Rp 2,000,000", "Gold - Rp 1,500,000", "Silver - Rp 1,000,000", "Brown - Rp 500,000");
-        categoryComboBox.setStyle("-fx-background-color:rgb(253, 255, 123); -fx-text-fill: white; -fx-font-weight: bold;");
+        categoryComboBox.setStyle("-fx-background-color:rgb(204, 114, 137); -fx-text-fill: white; -fx-font-weight: bold;");
 
         Label ticketLabel = new Label("Jumlah Tiket:");
         ticketLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
@@ -34,7 +40,7 @@ public class TicketBooking {
         ticketField.setPromptText("Masukkan jumlah tiket");
 
         Label totalPriceLabel = new Label("Total Harga: Rp 0");
-        totalPriceLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2E86C1;");
+        totalPriceLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill:rgb(204, 114, 137);");
 
         Button buyButton = new Button("Beli Tiket");
         buyButton.setStyle("-fx-background-color: #1ABC9C; -fx-text-fill: white; -fx-font-weight: bold;");
@@ -42,13 +48,18 @@ public class TicketBooking {
         VBox ticketLayout = new VBox(15);
         ticketLayout.setPadding(new Insets(20));
         ticketLayout.setStyle("-fx-background-color:rgb(226, 209, 215)");
-        ticketLayout.getChildren().addAll(title, nameLabel, nameField, concertLabel, concertComboBox, categoryLabel, categoryComboBox, ticketLabel, ticketField, totalPriceLabel, buyButton);
+        ticketLayout.getChildren().addAll(titleContainer, nameLabel, nameField, concertLabel, concertComboBox, categoryLabel, categoryComboBox, ticketLabel, ticketField, totalPriceLabel, buyButton);
 
-        Scene ticketScene = new Scene(ticketLayout, 450, 450);
+        Scene ticketScene = new Scene(ticketLayout, 600, 450);
 
         // Scene Metode Pembayaran
         Label paymentTitle = new Label("Metode Pembayaran");
         paymentTitle.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: rgb(204, 114, 137)");
+
+        HBox paymentTitleContainer = new HBox();
+        paymentTitleContainer.setAlignment(Pos.CENTER); // Align title to the center
+        paymentTitleContainer.getChildren().add(paymentTitle);        
+
         RadioButton mBankingPayment = new RadioButton("M-Banking");
         mBankingPayment.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
         RadioButton eWalletPayment = new RadioButton("E-Wallet");
@@ -63,15 +74,21 @@ public class TicketBooking {
         Button backToTicketButton = new Button("Kembali ke Pemesanan");
         backToTicketButton.setStyle("-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold;");
 
-        VBox paymentLayout = new VBox(15, paymentTitle, mBankingPayment, eWalletPayment, confirmPaymentMethod, backToTicketButton);
+        VBox paymentLayout = new VBox(15, paymentTitleContainer, mBankingPayment, eWalletPayment, confirmPaymentMethod, backToTicketButton);
         paymentLayout.setPadding(new Insets(20));
         paymentLayout.setStyle("-fx-background-color:rgb(226, 209, 215)");
+    
 
-        Scene paymentScene = new Scene(paymentLayout, 400, 300);
+        Scene paymentScene = new Scene(paymentLayout, 500, 400);
 
         // Scene Penyedia Pembayaran
         Label subOptionTitle = new Label("Pilih Penyedia Pembayaran");
         subOptionTitle.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: rgb(204, 114, 137)");
+
+        HBox subOptionTitleContainer = new HBox();
+        subOptionTitleContainer.setAlignment(Pos.CENTER); // Align title to the center
+        subOptionTitleContainer.getChildren().add(subOptionTitle);        
+
         ComboBox<String> subOptionCombo = new ComboBox<>();
         Button confirmSubOption = new Button("Konfirmasi");
         confirmSubOption.setStyle("-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;");
@@ -79,15 +96,20 @@ public class TicketBooking {
         Button backToPaymentButton = new Button("Kembali ke Metode Pembayaran");
         backToPaymentButton.setStyle("-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold;");
 
-        VBox subOptionLayout = new VBox(15, subOptionTitle, subOptionCombo, confirmSubOption, backToPaymentButton);
+        VBox subOptionLayout = new VBox(15, subOptionTitleContainer, subOptionCombo, confirmSubOption, backToPaymentButton);
         subOptionLayout.setPadding(new Insets(20));
         subOptionLayout.setStyle("-fx-background-color:rgb(226, 209, 215)");
 
-        Scene subOptionScene = new Scene(subOptionLayout, 400, 300);
+        Scene subOptionScene = new Scene(subOptionLayout, 500, 400);
 
         // Scene Virtual Account
         Label vaTitle = new Label("Nomor Virtual Account");
         vaTitle.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: rgb(204, 114, 137)");
+
+        HBox vaTitleContainer = new HBox();
+        vaTitleContainer.setAlignment(Pos.CENTER);
+        vaTitleContainer.getChildren().add(vaTitle); 
+
         TextArea vaDetails = new TextArea();
         vaDetails.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
         vaDetails.setEditable(false);
@@ -101,11 +123,11 @@ public class TicketBooking {
         Button cancelOrderButton = new Button("Batalkan Pesanan");
         cancelOrderButton.setStyle("-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold;");
 
-        VBox vaLayout = new VBox(15, vaTitle, vaDetails, completePaymentButton, changePaymentButton, cancelOrderButton);
+        VBox vaLayout = new VBox(15, vaTitleContainer, vaDetails, completePaymentButton, changePaymentButton, cancelOrderButton);
         vaLayout.setPadding(new Insets(20));
         vaLayout.setStyle("-fx-background-color:rgb(226, 209, 215)");
 
-        Scene vaScene = new Scene(vaLayout, 400, 300);
+        Scene vaScene = new Scene(vaLayout, 500, 400);
 
         // Navigasi Antar Scene
         buyButton.setOnAction(e -> {
@@ -124,7 +146,7 @@ public class TicketBooking {
                 } else {
                     subOptionCombo.getItems().setAll("ShopeePay", "GoPay", "Dana", "Ovo");
                 }
-                subOptionCombo.setStyle("-fx-background-color:rgb(184, 141, 253); -fx-text-fill: white; -fx-font-weight: bold;");
+                subOptionCombo.setStyle("-fx-background-color:rgb(204, 114, 137); -fx-text-fill: white; -fx-font-weight: bold;");
                 primaryStage.setScene(subOptionScene);
             }
         });
