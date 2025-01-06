@@ -10,7 +10,7 @@ public class Main extends Application {
 
         // Menampilkan scene login pertama kali
         primaryStage.setScene(loginAndRegister.getLoginScene());
-        primaryStage.setTitle("Aplikasi Tiket Konser ♫ 🎸🎧🎹");
+        primaryStage.setTitle(" TicketVibe ♫ 🎸🎧🎹");
         primaryStage.show();
     }
 

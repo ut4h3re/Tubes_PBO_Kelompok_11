@@ -1,5 +1,6 @@
 import javafx.scene.Scene;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -10,6 +11,10 @@ public class Feedback {
         // Judul Feedback
         Label feedbackTitle = new Label("Beri Ulasan Anda");
         feedbackTitle.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: rgb(204, 114, 137)");
+        HBox feedbackTitleContainer = new HBox();
+        feedbackTitleContainer.setAlignment(Pos.CENTER);
+        feedbackTitleContainer.getChildren().add(feedbackTitle); 
+
 
         // Slider untuk skor ulasan
         Label scoreLabel = new Label("Skor (1-5):");
@@ -38,11 +43,11 @@ public class Feedback {
 
 
         // Layout untuk feedback scene
-        VBox feedbackLayout = new VBox(15, feedbackTitle, scoreLabel, scoreSlider, commentLabel, commentArea, submitFeedbackButton, skipFeedbackButton);
+        VBox feedbackLayout = new VBox(15, feedbackTitleContainer, scoreLabel, scoreSlider, commentLabel, commentArea, submitFeedbackButton, skipFeedbackButton);
         feedbackLayout.setPadding(new Insets(20));
         feedbackLayout.setStyle("-fx-background-color:rgb(226, 209, 215)");
 
-        Scene feedbackScene = new Scene(feedbackLayout, 400, 350);
+        Scene feedbackScene = new Scene(feedbackLayout, 500, 400);
 
         // Logika tombol
         submitFeedbackButton.setOnAction(e -> {

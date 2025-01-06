@@ -1,4 +1,5 @@
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -19,8 +20,12 @@ public class LoginAndRegister {
 
     private void initializeScenes(Stage primaryStage) {
         // Scene Login
-        Label loginTitle = new Label("Login Aplikasi Tiket Konser");
-        loginTitle.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: rgb(204, 114, 137)");
+        Label loginTitle = new Label("Login TicketVibe");
+        loginTitle.setStyle("-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: rgb(204, 114, 137)");
+
+        HBox loginTitleContainer = new HBox();
+        loginTitleContainer.setAlignment(Pos.CENTER); // Align title to the center
+        loginTitleContainer.getChildren().add(loginTitle);        
 
         Label emailLabel = new Label("Email:");
         emailLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
@@ -45,17 +50,20 @@ public class LoginAndRegister {
         loginLayout.setPadding(new Insets(20));
         loginLayout.setStyle("-fx-background-color:rgb(226, 209, 215)");
         loginLayout.getChildren().addAll(
-                loginTitle, emailLabel, emailField,
-                passwordLabel, passwordField,
-                loginButton, registerButton, loginMessage
-        );
+            loginTitleContainer, emailLabel, emailField,
+            passwordLabel, passwordField, loginButton, 
+            registerButton, loginMessage);
 
-        loginScene = new Scene(loginLayout, 400, 300);
+        loginScene = new Scene(loginLayout, 500, 400);
 
         // Scene Registrasi
         Label registerTitle = new Label("Daftar Akun Baru");
-        registerTitle.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: rgb(204, 114, 137)");
-
+        registerTitle.setStyle("-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: rgb(204, 114, 137)");
+        
+        HBox registerTitleContainer = new HBox();
+        registerTitleContainer.setAlignment(Pos.CENTER); // Align title to the center
+        registerTitleContainer.getChildren().add(registerTitle);
+        
         Label regEmailLabel = new Label("Email:");
         regEmailLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill:black");
         TextField regEmailField = new TextField();
@@ -84,13 +92,13 @@ public class LoginAndRegister {
         registerLayout.setPadding(new Insets(20));
         registerLayout.setStyle("-fx-background-color:rgb(226, 209, 215)");
         registerLayout.getChildren().addAll(
-                registerTitle, regEmailLabel, regEmailField,
+                registerTitleContainer, regEmailLabel, regEmailField,
                 regPasswordLabel, regPasswordField,
                 confirmPasswordLabel, confirmPasswordField,
                 submitRegisterButton, backToLoginButton, registerMessage
         );
 
-        registerScene = new Scene(registerLayout, 400, 350);
+        registerScene = new Scene(registerLayout, 500, 400);
 
         // Login Button Action
         loginButton.setOnAction(e -> {

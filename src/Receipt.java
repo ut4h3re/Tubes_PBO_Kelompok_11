@@ -1,5 +1,6 @@
 import javafx.scene.Scene;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -10,6 +11,10 @@ public class Receipt {
         // Scene Struk Pembelian Tiket
         Label receiptTitle = new Label("Struk Pembelian Tiket");
         receiptTitle.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: rgb(204, 114, 137)");
+        
+        HBox receiptTitleContainer = new HBox();
+        receiptTitleContainer.setAlignment(Pos.CENTER);
+        receiptTitleContainer.getChildren().add(receiptTitle);
 
         // TextArea untuk menampilkan struk pembelian
         TextArea receiptArea = new TextArea(receiptDetails);
@@ -22,11 +27,11 @@ public class Receipt {
         feedbackButton.setStyle("-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold;");
 
         // Layout dan scene untuk struk
-        VBox receiptLayout = new VBox(15, receiptTitle, receiptArea, feedbackButton);
+        VBox receiptLayout = new VBox(15, receiptTitleContainer, receiptArea, feedbackButton);
         receiptLayout.setPadding(new Insets(20));
         receiptLayout.setStyle("-fx-background-color:rgb(226, 209, 215)");
 
-        Scene receiptScene = new Scene(receiptLayout, 400, 300);
+        Scene receiptScene = new Scene(receiptLayout, 500, 400);
 
         // Logika untuk menuju ke feedback scene
         feedbackButton.setOnAction(e -> {
